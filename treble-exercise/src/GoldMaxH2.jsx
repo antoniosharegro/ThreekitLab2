@@ -15,6 +15,7 @@ const { AccordionItem } = Accordion;
 const GoldMaxH2 = () => {
   const [sideDrawerState] = useAttribute('Side Drawers');
   const [topDrawerState] = useAttribute('Top Drawers');
+  const [extraDrawerState] = useAttribute('Extra Drawers');
   if (!sideDrawerState || !topDrawerState) return <></>;
 
   return (
@@ -43,12 +44,13 @@ const GoldMaxH2 = () => {
             ) : (
               <></>
             )}
-            {sideDrawerState.value === 'Yes' ? (
+            {sideDrawerState.value === 'No' ||
+            extraDrawerState.value === 'None' ? (
+              <></>
+            ) : (
               <AccordionItem label="Extra Drawers Color">
                 <ColorSwatch attribute="Extra Drawers Color" size="65px" />
               </AccordionItem>
-            ) : (
-              <></>
             )}
             <AccordionItem label="Top Drawers">
               <Tiles attribute="Top Drawers" />
